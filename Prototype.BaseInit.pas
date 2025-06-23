@@ -74,6 +74,13 @@ implementation
 
 { TOGLInit }
 
+//    BaseInit.SetHWND(aHWND);
+//    if not BaseInit.InitGLS then
+//      begin
+//        Result := False;
+//        Exit;
+//      end;
+
 constructor TOGLInit.Create;
   begin
     //
