@@ -1,4 +1,4 @@
-unit Prototype.OGLShaderSystem;
+unit Prototype.OGLShader;
 
 interface
 
