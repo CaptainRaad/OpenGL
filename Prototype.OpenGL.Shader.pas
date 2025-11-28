@@ -14,7 +14,7 @@ uses
 type
   TGluIntList = TList<gluInt>;
 
-  TShaderSystem = class
+  TOGLShader = class
 	  private
       ProgramList: TgluIntList;
 		  procedure CompileShader(const SRC: PAnsiChar; var ID: GLuint);
@@ -29,19 +29,19 @@ implementation
 
 { TShaderSystem }
 
-constructor TShaderSystem.Create;
+constructor TOGLShader.Create;
   begin
     ProgramList := TgluIntList.Create;
   end;
 
-destructor TShaderSystem.Destroy;
+destructor TOGLShader.Destroy;
   var
     ID:gluInt;
   begin
     for ID in ProgramList do glDeleteProgram(ID);
   end;
 
-procedure TShaderSystem.CompileShader(const SRC: PAnsiChar; var ID: GLuint);
+procedure TOGLShader.CompileShader(const SRC: PAnsiChar; var ID: GLuint);
   var
     Success: GLint;
     InfoLog: array[0..511] of AnsiChar;
@@ -60,7 +60,7 @@ procedure TShaderSystem.CompileShader(const SRC: PAnsiChar; var ID: GLuint);
       end;
   end;
 
-procedure TShaderSystem.LinkProgram(ID: GLuint);
+procedure TOGLShader.LinkProgram(ID: GLuint);
   var
     Success: GLint;
     InfoLog: array[0..511] of AnsiChar;
@@ -78,7 +78,7 @@ procedure TShaderSystem.LinkProgram(ID: GLuint);
       end;
   end;
 
-procedure TShaderSystem.NewShaderProgram(const VSRC, FSRC: PAnsiChar; var ID: gluInt);
+procedure TOGLShader.NewShaderProgram(const VSRC, FSRC: PAnsiChar; var ID: gluInt);
   var
     FS,VS:gluInt;
   begin
